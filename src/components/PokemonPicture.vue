@@ -1,7 +1,7 @@
 <template lang="">
 	<div class="container">
-		<img :src="imgSrc" class="hidden" alt="pokemon" />
-		<img :src="imgSrc" v-if="showPokemon" class="fade-in" alt="pokemon" />
+		<img v-if="!showPokemon" :src="imgSrc" class="hidden" alt="pokemon" />
+		<img v-else :src="imgSrc"  class="fade-in" alt="pokemon" />
 	</div>
 </template>
 <script >
@@ -24,7 +24,7 @@ export default {
 	},
 };
 </script>
-<style lang="scss">
+<style scoped lang="scss">
 .hidden {
 	filter: brightness(0);
 }
@@ -43,8 +43,6 @@ export default {
 
 img {
 	height: 200px;
-	position: absolute;
-	right: 40%;
 	user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
@@ -52,17 +50,6 @@ img {
 	-webkit-user-select: none;
 }
 
-@media screen and (max-width: 768px) {
-	img {
-		right: 30%;
-	}
-}
-
-@media screen and (max-width: 480px) {
-	img {
-		right: 20%;
-	}
-}
 
 @keyframes fadeIn {
 	0% {
